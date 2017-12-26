@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="450" y="107"/>
         </scene>
-        <!--View Controller-->
+        <!--Recording View Controller-->
         <scene sceneID="Kqr-nP-6xA">
             <objects>
-                <viewController id="z84-fn-bD4" sceneMemberID="viewController">
+                <viewController id="z84-fn-bD4" customClass="RecordingViewController" customModule="Voice_Recording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Ll-j0-VaP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +63,9 @@
                                 <state key="normal" title="Record">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordbutton:" destination="z84-fn-bD4" eventType="touchUpInside" id="wd2-4c-k7f"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxI-yJ-HG3">
                                 <rect key="frame" x="157" y="217" width="60" height="30"/>
@@ -74,10 +77,16 @@
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="playbutton:" destination="z84-fn-bD4" eventType="touchUpInside" id="ue7-3T-jJh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3up-2s-v1P">
                                 <rect key="frame" x="169" y="352" width="37" height="30"/>
                                 <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="savebutton:" destination="z84-fn-bD4" eventType="touchUpInside" id="gfN-RT-dTa"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recording Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHa-VD-gk5">
                                 <rect key="frame" x="94" y="289" width="180" height="30"/>
@@ -103,6 +112,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Bn-US-MHd"/>
                     </view>
+                    <connections>
+                        <outlet property="recordobutton" destination="6lI-9h-ber" id="iFg-QD-OC4"/>
+                        <outlet property="textfield" destination="MHa-VD-gk5" id="anm-p1-AdO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yen-Uj-8v6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
