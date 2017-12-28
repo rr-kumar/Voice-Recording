@@ -52,6 +52,19 @@ class RecordingViewController: UIViewController {
         }
     }
     @IBAction func recordbutton(_ sender: Any) {
+        if audioRecorder!.isRecording{
+            // Stop the Recording
+            audioRecorder?.stop()
+            //Change the Button to Record
+            recordobutton.setTitle("Record", for: .normal)
+        }else{
+            // Start the Recording
+            audioRecorder?.record()
+            
+            //Change the Button to Start
+            recordobutton.setTitle("Stop", for: .normal)
+            
+        }
     }
     
     @IBAction func playbutton(_ sender: Any) {
