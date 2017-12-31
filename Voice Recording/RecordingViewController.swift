@@ -58,6 +58,7 @@ class RecordingViewController: UIViewController {
         }
     }
     @IBAction func recordbutton(_ sender: Any) {
+        
         if audioRecorder!.isRecording{
             // Stop the Recording
             audioRecorder?.stop()
