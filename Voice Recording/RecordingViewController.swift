@@ -13,12 +13,18 @@ class RecordingViewController: UIViewController {
     
     @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var recordobutton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var audioRecorder : AVAudioRecorder?
+    var audioPlayer: AVAudioPlayer?
+    var audioURL: URL? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupRecorder()
+        playButton.isEnabled = false
+        saveButton.isEnabled = false
     }
     
     func setupRecorder(){
@@ -34,7 +40,7 @@ class RecordingViewController: UIViewController {
             
             let basepath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
             let pathComponents = [basepath,"audio.mp3"]
-            let audioURL = NSURL.fileURL(withPathComponents: pathComponents)
+            audioURL = NSURL.fileURL(withPathComponents: pathComponents)
             
             // audio recorder settings
             
@@ -57,6 +63,8 @@ class RecordingViewController: UIViewController {
             audioRecorder?.stop()
             //Change the Button to Record
             recordobutton.setTitle("Record", for: .normal)
+            playButton.isEnabled = true
+            saveButton.isEnabled = true
         }else{
             // Start the Recording
             audioRecorder?.record()
@@ -68,9 +76,20 @@ class RecordingViewController: UIViewController {
     }
     
     @IBAction func playbutton(_ sender: Any) {
+        do{
+            try audioPlayer = AVAudioPlayer(contentsOf: audioURL!)
+            audioPlayer!.play()
+        }catch{}
     }
-    
     @IBAction func savebutton(_ sender: Any) {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let sound = Sound(context: context)
+        sound.name = textfield.text
+        sound.audio = NSData(contentsOf: audioURL!)! as Data
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {

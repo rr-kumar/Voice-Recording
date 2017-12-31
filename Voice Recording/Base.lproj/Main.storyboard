@@ -113,7 +113,9 @@
                         <viewLayoutGuide key="safeArea" id="8Bn-US-MHd"/>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="CxI-yJ-HG3" id="C1D-oa-DLq"/>
                         <outlet property="recordobutton" destination="6lI-9h-ber" id="iFg-QD-OC4"/>
+                        <outlet property="saveButton" destination="3up-2s-v1P" id="kAZ-zV-LW6"/>
                         <outlet property="textfield" destination="MHa-VD-gk5" id="anm-p1-AdO"/>
                     </connections>
                 </viewController>
